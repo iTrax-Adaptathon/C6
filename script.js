@@ -122,4 +122,4 @@ function dashboard(result, isSample = false) {
   document.querySelector('#reset').onclick = document.querySelector('#again').onclick = () => inputScreen();
 }
 function countUp(element) { const target = Number(element.dataset.target), start = performance.now(), duration = 650; function frame(now) { const progress = Math.min((now - start) / duration, 1); element.textContent = (target * (1 - Math.pow(1 - progress, 3))).toFixed(1); if (progress < 1) requestAnimationFrame(frame); } requestAnimationFrame(frame); }
-dashboard(SAMPLE_JUDGMENT, true);
+inputScreen();
