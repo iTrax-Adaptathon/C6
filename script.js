@@ -97,7 +97,7 @@ async function loading(debate) {
   try {
     const response = await fetch(`${API_BASE_URL}/api/v1/judgments`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(debate) });
     const body = await responseJson(response);
-    if (!response.ok) throw new Error(body.detail || 'The judge could not analyze this debate.');
+    if (!response.ok) throw new Error(body.detail || 'The judge could not analyze this debate. Provide your API key and model.');
     dashboard(body);
   } catch (error) { inputScreen(debate, error.message || 'Unable to connect to the judging service.'); }
   finally { clearInterval(clock); }
