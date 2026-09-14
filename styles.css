@@ -9,3 +9,5 @@
  .error.show { display:block; }
 button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible { outline:3px solid #3a5c4760; outline-offset:3px; }
 .primary:hover:not(:disabled) { background:#2e4d3a; }
+.api-callout { width:min(1120px,calc(100% - 32px));margin:24px auto -38px;padding:13px 16px;border:1px solid #b7cbbc;border-radius:12px;background:#e8f0e9;color:var(--ink);font-size:13px;line-height:1.55; }.api-callout strong { display:block;color:var(--green); }.api-callout code { font-family:ui-monospace,monospace;font-size:.92em; }
+@media (max-width:700px) { .api-callout { margin:18px auto -20px; } }
