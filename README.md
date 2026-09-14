@@ -9,6 +9,7 @@ See [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) for the shared frontend/backend
 - Claim-by-claim analysis for two opposing arguments.
 - Deterministic logic, evidence, and rebuttal scoring.
 - A transparent final verdict with per-claim explanations.
+- An immediate, clearly labeled sample verdict that demonstrates the result screen without an API key.
 - Optional, server-controlled support for personal AI providers.
 - A single FastAPI service that serves both the UI and API.
 
