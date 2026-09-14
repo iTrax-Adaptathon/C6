@@ -1,0 +1,7 @@
+# Python runtime and local secrets
+__pycache__/
+*.py[cod]
+.env
+backend/.env
+.venv/
+pytest-cache-files-*/

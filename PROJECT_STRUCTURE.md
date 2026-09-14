@@ -21,24 +21,18 @@ C6/
 │   │   │   └── judgments.py      # POST /api/v1/judgments endpoint
 │   │   ├── services/
 │   │   │   ├── __init__.py
-│   │   │   ├── judge.py          # Coordinates the full judging workflow
-│   │   │   ├── claim_parser.py   # Extracts claims, evidence, and assumptions
-│   │   │   ├── rebuttals.py      # Maps direct replies to opposing claims
+│   │   │   ├── judge.py          # Coordinates judging and consistency checks
 │   │   │   ├── scorer.py         # Deterministic weighted score calculation
 │   │   │   └── llm_client.py     # LLM provider integration
 │   │   └── prompts/
-│   │       ├── extract_claims.txt
-│   │       ├── evaluate_claims.txt
-│   │       └── final_verdict.txt
+│   │       └── evaluate_claims.txt
 │   ├── tests/
 │   │   ├── test_api.py
 │   │   └── test_scoring.py
 │   ├── requirements.txt
 │   └── .env.example              # Keys only; never commit a real .env file
 │
-└── docs/
-    ├── api-contract.md           # Endpoint request/response examples
-    └── scoring-rubric.md         # Definitions for logic, evidence, rebuttal
+└── .gitignore                    # Local secrets and Python artifacts
 ```
 
 ## Ownership boundaries
@@ -60,7 +54,7 @@ Transcript input
     → cross-side rebuttal mapping
     → logic, evidence, and rebuttal assessment
     → deterministic weighted score calculation
-    → winner or justified close-call result
+    → deterministic winner and justified verdict
     → structured API response for the UI
 ```
 
@@ -78,4 +72,4 @@ The score calculation should stay in `services/scorer.py`, rather than being lef
 }
 ```
 
-The response should include each side's component scores, claim-level explanations tied to transcript excerpts, a confidence value, limitations, and a verdict. A close or poorly supported debate must be returned as a justified close-call, not arbitrarily assigned to a side.
+The response includes each side's component scores, claim-level explanations, and a verdict. If scores are close, the verdict must identify the decisive claim exchange rather than rely on rhetoric or a coin flip.
