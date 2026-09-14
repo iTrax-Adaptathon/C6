@@ -1,6 +1,6 @@
 # AI Debate Judge — Project Structure
 
-This document is the shared reference for the project layout. The current UI remains in the repository root; Python services belong in `backend/`.
+This document is the shared reference for the project layout. The browser UI remains in the repository root and is served by the FastAPI service in `backend/`.
 
 ```text
 C6/
@@ -39,12 +39,11 @@ C6/
 
 | Area | Responsibility |
 | --- | --- |
-| `index.html`, `styles.css`, `script.js` | Frontend input, loading states, and result rendering |
+| `index.html`, `styles.css`, `script.js` | Frontend input, loading states, API requests, and result rendering |
 | `backend/app/api/` | HTTP validation, status codes, and API responses |
 | `backend/app/services/` | Claim analysis, rebuttal comparison, scoring, and verdict generation |
 | `backend/app/prompts/` | Versioned LLM prompts with structured-output instructions |
 | `backend/tests/` | API and scoring regression coverage |
-| `docs/` | Team-facing contracts and judging rules |
 
 ## Required judgment flow
 
@@ -60,7 +59,7 @@ Transcript input
 
 The score calculation should stay in `services/scorer.py`, rather than being left entirely to an LLM. This makes the outcome repeatable and lets the team explain why one side won.
 
-## Initial API contract
+## API contract
 
 `POST /api/v1/judgments`
 

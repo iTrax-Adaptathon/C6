@@ -1,7 +1,11 @@
 # Python runtime and local secrets
 __pycache__/
 *.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
 .env
 backend/.env
 .venv/
-pytest-cache-files-*/
+*.egg-info/
+.DS_Store

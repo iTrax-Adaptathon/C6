@@ -27,5 +27,3 @@ def create_judgment(request: JudgmentRequest) -> JudgmentResponse:
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(error)) from error
     except JudgeProviderError as error:
         raise HTTPException(status_code=status.HTTP_502_BAD_GATEWAY, detail=str(error)) from error
-    except ValueError as error:
-        raise HTTPException(status_code=status.HTTP_502_BAD_GATEWAY, detail="Invalid structured analysis returned by the judge.") from error

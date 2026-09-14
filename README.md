@@ -25,4 +25,4 @@ GitHub Actions runs this suite on Python 3.11 and 3.12 for every push and pull r
 
 ## AI-system selection
 
-The UI defaults to the backend's shared AI judge. In `backend/.env`, set `ALLOW_CUSTOM_PROVIDER=true` to allow users to select their own OpenAI API or an OpenAI-compatible Responses API endpoint. Personal credentials are used for that request only and are not saved by the application. Never commit `.env` files or API keys.
+The UI defaults to the backend's shared AI judge. In `backend/.env`, set `ALLOW_CUSTOM_PROVIDER=true` only when you have authentication and rate limits in place and want users to select their own OpenAI API or an OpenAI-compatible Responses API endpoint. Personal credentials are used for that request only and are not saved by the application. Never commit `.env` files or API keys.
