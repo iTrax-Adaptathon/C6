@@ -4,9 +4,9 @@ This document is the shared reference for the project layout. The browser UI rem
 
 ```text
 C6/
-├── index.html                    # Existing browser entry point
-├── styles.css                    # Existing UI styles
-├── script.js                     # Existing UI behaviour; will call the API
+├── index.html                    # Browser entry point and document metadata
+├── styles.css                    # Responsive application styles
+├── script.js                     # UI behavior and API integration
 ├── README.md                     # Project overview and local setup
 ├── PROJECT_STRUCTURE.md          # This shared structure reference
 │
@@ -72,3 +72,10 @@ The score calculation should stay in `services/scorer.py`, rather than being lef
 ```
 
 The response includes each side's component scores, claim-level explanations, and a verdict. If scores are close, the verdict must identify the decisive claim exchange rather than rely on rhetoric or a coin flip.
+
+## Development rules
+
+- Keep browser rendering and request handling in the root frontend files.
+- Keep validation at the API boundary and provider-specific code in `services/llm_client.py`.
+- Do not let an LLM calculate the final winner; `services/scorer.py` remains the source of truth.
+- Keep secret values in `backend/.env` only. The committed template must remain value-free.

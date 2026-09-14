@@ -1,11 +1,28 @@
 # Contributing
 
-Keep changes focused, document any API-contract change, and do not include secrets or local environment files in a commit.
+Thank you for improving AI Debate Judge. Keep contributions small, reviewable, and focused on one user-visible outcome.
 
-Before opening a pull request, run:
+## Before you start
+
+- Do not commit API keys, `.env` files, virtual environments, or generated coverage files.
+- Keep the deterministic scoring logic in `backend/app/services/scorer.py`.
+- Update the API contract documentation when a request or response schema changes.
+
+## Local checks
+
+Create a virtual environment, install `backend/requirements.txt`, and run:
 
 ```powershell
 python -m pytest backend/tests -q
 ```
 
-Use a concise, imperative commit subject, such as `fix: validate compatible provider URLs`. Pull requests should explain the user-visible change and include tests when behavior changes.
+Run the app manually for UI or API changes and confirm that `GET /health` responds with `{"status":"ok"}`.
+
+## Pull requests
+
+- Use a concise, imperative commit subject, such as `fix: validate compatible provider URLs`.
+- Explain the user-facing effect and any trade-offs.
+- Include tests when behavior changes.
+- Keep pull requests free of unrelated formatting or generated-file changes.
+
+GitHub Actions must pass before merging.

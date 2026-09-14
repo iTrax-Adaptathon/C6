@@ -1,8 +1,21 @@
-# C6 — AI Debate Judge
+# AI Debate Judge
 
 A professional, claim-by-claim debate evaluation app. The FastAPI service serves both the browser UI and the judging API, while score calculation remains deterministic and auditable.
 
 See [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) for the shared frontend/backend layout and implementation boundaries.
+
+## Features
+
+- Claim-by-claim analysis for two opposing arguments.
+- Deterministic logic, evidence, and rebuttal scoring.
+- A transparent final verdict with per-claim explanations.
+- Optional, server-controlled support for personal AI providers.
+- A single FastAPI service that serves both the UI and API.
+
+## Requirements
+
+- Python 3.11 or newer
+- An OpenAI API key for the shared judge
 
 ## Run the backend
 
@@ -12,6 +25,16 @@ See [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) for the shared frontend/backend
 4. From `backend/`, run: `uvicorn app.main:app --reload --port 8000`
 
 Open `http://127.0.0.1:8000` in a browser. The same service provides the UI and API; check the API with `GET /health`.
+
+## API
+
+| Method | Endpoint | Purpose |
+| --- | --- | --- |
+| `GET` | `/health` | Service health check |
+| `GET` | `/api/v1/configuration` | Safe, non-secret UI configuration |
+| `POST` | `/api/v1/judgments` | Evaluate a debate and return a structured verdict |
+
+The interactive API documentation is available at `http://127.0.0.1:8000/docs` while the service is running.
 
 ## Quality checks
 
@@ -26,3 +49,7 @@ GitHub Actions runs this suite on Python 3.11 and 3.12 for every push and pull r
 ## AI-system selection
 
 The UI defaults to the backend's shared AI judge. In `backend/.env`, set `ALLOW_CUSTOM_PROVIDER=true` only when you have authentication and rate limits in place and want users to select their own OpenAI API or an OpenAI-compatible Responses API endpoint. Personal credentials are used for that request only and are not saved by the application. Never commit `.env` files or API keys.
+
+## Project standards
+
+The repository uses Apache-2.0 licensing, GitHub Actions for continuous integration, and Dependabot for dependency updates. See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution expectations and [SECURITY.md](SECURITY.md) for vulnerability reporting guidance.
